@@ -21,10 +21,8 @@ const AppDeploymentCenter: React.FC = () => {
     <Box sx={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center' }}>
       
       {/* Left container to display controls, such as selecting icons and backgrounds. */}
-      <Box sx={{ width: '300px', bgcolor: 'background.paper', p: 2, boxShadow: 1 }}>
         {/* DisplayController handles the settings and customization controls */}
         <DisplayController />
-      </Box>
 
       {/* Right container for displaying the live preview of the current selections. */}
       <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
