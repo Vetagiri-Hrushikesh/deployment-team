@@ -45,27 +45,29 @@ export type ControlConfig = {
   [key in FeatureKey]: PackageControls;
 };
   
+// Defines the structure of the global state.
 export interface GlobalState {
-    isAuthenticated: boolean;
-    packageType: PackageType;
-    role: RoleType;
-    features: FeatureKey[];
-    selectedFeature: FeatureKey | null;
+    isAuthenticated: boolean;                // Indicates if the user is authenticated.
+    packageType: PackageType;                // The user's package type ('basic' or 'premium').
+    role: RoleType;                          // The user's role ('user' or 'admin').
+    features: FeatureKey[];                  // The list of features available to the user.
+    selectedFeature: FeatureKey | null;     // The feature currently selected by the user in the UI.
 }
-  
+// Describes sub-control access for a specific role.
 export interface SubControlAccess {
     [role: string]: string[];
 }
-  
+// Defines sub-control access configurations for different package types.
 export interface ControlSubControls {
     premium: SubControlAccess;
     basic: SubControlAccess;
 }
-  
+// Maps control names to their corresponding sub-control configurations.
 export type SubControlConfig = {
     [control in ControlName]: ControlSubControls;
 };
 
+// Defines the structure of actions that can be dispatched to modify the global state.
 export type GlobalAction = 
 | { type: 'SET_AUTHENTICATION'; payload: boolean }
 | { type: 'SET_USER_PACKAGE_TYPE'; payload: PackageType }

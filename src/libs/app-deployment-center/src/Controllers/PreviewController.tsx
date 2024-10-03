@@ -5,9 +5,15 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
+/**
+ * PreviewController component allows users to preview different features by selecting them from tabs.
+ * 
+ * - Displays a list of features (tabs) based on the available features in the global state.
+ * - Renders the corresponding feature component based on the selected feature.
+ */
 const PreviewController: React.FC = () => {
-    const { state, dispatch } = useGlobalState();
-    const { features, selectedFeature } = state;
+    const { state, dispatch } = useGlobalState();       // Destructuring state and dispatch from global context
+    const { features, selectedFeature } = state;        // Extracting features list and currently selected feature from state
 
     // Function to determine which component to render based on the selected feature
     const renderFeature = (): JSX.Element => {
@@ -22,7 +28,7 @@ const PreviewController: React.FC = () => {
 
     // Handle changing the selected feature
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        dispatch({ type: 'SET_SELECTED_FEATURE', payload: newValue });
+        dispatch({ type: 'SET_SELECTED_FEATURE', payload: newValue });      // Update selectedFeature in global state
     };
 
     return (
@@ -42,6 +48,7 @@ const PreviewController: React.FC = () => {
                 ))}
             </Tabs>
             <div className="feature-content">
+                 {/* Render the feature based on the selected tab */}
                 {renderFeature()}
             </div>
         </Box> 
